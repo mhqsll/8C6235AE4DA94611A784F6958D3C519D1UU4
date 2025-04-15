@@ -28,6 +28,11 @@ headers = {
     'x-requested-with': 'XMLHttpRequest',
 }
 
+if not os.path.exists(os.path.join(cur_path, 'pdf')):
+    os.makedirs(os.path.join(cur_path, 'pdf'))
+
+if not os.path.exists(os.path.join(cur_path, 'excel')):
+    os.makedirs(os.path.join(cur_path, 'excel'))
 
 # 下载成绩报告到本地
 def downloadFile(PAPER_NAME,url, fileName):
