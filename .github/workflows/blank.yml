@@ -9,7 +9,7 @@ on:
   # pull_request:
   #   branches: [ "main" ]
   schedule:
-    - cron: '10 7 * * *'
+    - cron: '30 7 * * *'
     
 
 permissions:
@@ -29,6 +29,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests pandas openpyxl
-    - name: run test.py
-      run: python src/test.py
+        # pip install requests pandas openpyxl
+        pip install requests
+    - name: run baolong.py
+      run: python src/baolong.py
