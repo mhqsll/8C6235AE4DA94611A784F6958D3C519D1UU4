@@ -10,6 +10,8 @@ on:
   #   branches: [ "main" ]
   schedule:
     - cron: '30 7 * * *'
+    - cron: '40 23 * * *'
+    - cron: '0 10 * * *'
     
 
 permissions:
