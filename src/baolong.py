@@ -10,7 +10,6 @@ headers = {
     'token': '157374fe698440b2a56d19eaf895aa61',
     'platformType': '1',
     'charset': 'utf-8',
-    'Referer': 'https://servicewechat.com/wxefc15bc9d0cb36b1/259/page-frame.html',
     'User-Agent': 'Mozilla/5.0 (Linux; Android 14; 23078RKD5C Build/UP1A.230905.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.103 Mobile Safari/537.36 XWEB/1300259 MMWEBSDK/20241103 MMWEBID/7927 MicroMessenger/8.0.55.2780(0x2800373B) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android',
     'Accept-Encoding': 'gzip, deflate, br',
 }
