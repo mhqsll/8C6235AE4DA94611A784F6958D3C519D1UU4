@@ -52,5 +52,6 @@ def sign():
 def main():
     refreshToken()
     sign()
+    # 测试
         
 main()
