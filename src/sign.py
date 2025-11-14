@@ -1,33 +1,40 @@
 import requests
 import time
+import random
+session = requests.session()
 
+
+def delay():
+    time.sleep(random.uniform(3, 5))
+    
+    
 headers = {
     'Host': 'proservice.powerlong.com',
     'Connection': 'keep-alive',
     'Content-Length': '1289',
     'content-type': 'application/json',
+    # 切换不同的uid
     'uid': '7d63c6f83d9543e3b80b389bfc42c841',
-    'token': '157374fe698440b2a56d19eaf895aa61',
     'platformType': '1',
     'charset': 'utf-8',
-    # 'Referer': 'https://servicewechat.com/wxefc15bc9d0cb36b1/259/page-frame.html',
     'User-Agent': 'Mozilla/5.0 (Linux; Android 14; 23078RKD5C Build/UP1A.230905.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.103 Mobile Safari/537.36 XWEB/1300259 MMWEBSDK/20241103 MMWEBID/7927 MicroMessenger/8.0.55.2780(0x2800373B) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android',
     'Accept-Encoding': 'gzip, deflate, br',
 }
 
-post_data={
-    "miniAppKey": "MAIN_MINIAPP",
-    "projectId": "WLKJ7E1C7AFAFB43E986670A81CF4258",
-    "uid": "7d63c6f83d9543e3b80b389bfc42c841",
-    "openId": "oWIV75WK0axPVPfsSE7z5wU6vNaA",
-    "parkOrderNum": "190119663E7oGD1XxJ3oS2ylnL4V0D",
-    "sign": "9cc88f7baefec382f90174aa92c7a592e58c6e8e",
-    "encryptedData": "TWY/+Y2hgY5jcvMLAjEk5wQRSA24Isw0p7KX+LzL5teci6XpBCwWV22mWcgUtxS9nb07qBxkBU5PYqu6Kv1ZHN00mjDIb6BnFoncJFHSavVNsHtcjzNJhAfc7JEwrvOqxq68WLGhdduMbSKLMx8A1fQ9bTnhNMw5A0fFiae6WPuELgfO4xr6L4PsAvbA+WuYaLXN9VBBdNAcCsfMJOP+j+ChAGedbBs6N7gqfbcNRje287786n8R5IHML7So4oiRvSqw5ZbKU+Ip+4Yct3VkXUo1WJuhxQNfL9Hc9XqhFNFuDoNb3BgAwP5rHydOnOUtxC9lSDHr2gYdk15FBcA35lCZovgs6To8WBaq7s1fKL1gTjLplttWQ7lNMl5HsNRDA567T+BZFYCK1NzK3cSaa7l0yDaWfpFx09XwwZ6D/l4hwDkQN7poMWvrNMq97UkeoLK1+XXiLCwu+9/whXsaLGFccT6nsRpC4Zrrl6WbDWcKlebtFbwD5eKq3aSy0L4h4wBudTBUM5vFu5MP8DNMGeJ/9FD7dZd+QP4rpAVA78UWek7j7B58NOmCBH6PHipToXf7hitIDLd2Yq5+6ngsjPICK+ccwKEFM/aIEk/g490YZIvzY7rGLJi22yfPiBoSuPtzgSayUwKhslyB3OaLpVF8rk0txXQ2ZqwRYLFRmaw=",
-    "timestamp": 1735981778411
-}
+# 必须完整
+# post_data={
+#     "miniAppKey": "MAIN_MINIAPP",
+#     "projectId": "WLKJ7E1C7AFAFB43E986670A81CF4258",
+#     "uid": "7d63c6f83d9543e3b80b389bfc42c841",
+#     "openId": "oWIV75WK0axPVPfsSE7z5wU6vNaA",
+#     "parkOrderNum": "190119663E7oGD1XxJ3oS2ylnL4V0D",
+#     "sign": "9cc88f7baefec382f90174aa92c7a592e58c6e8e",
+#     "encryptedData": "TWY/+Y2hgY5jcvMLAjEk5wQRSA24Isw0p7KX+LzL5teci6XpBCwWV22mWcgUtxS9nb07qBxkBU5PYqu6Kv1ZHN00mjDIb6BnFoncJFHSavVNsHtcjzNJhAfc7JEwrvOqxq68WLGhdduMbSKLMx8A1fQ9bTnhNMw5A0fFiae6WPuELgfO4xr6L4PsAvbA+WuYaLXN9VBBdNAcCsfMJOP+j+ChAGedbBs6N7gqfbcNRje287786n8R5IHML7So4oiRvSqw5ZbKU+Ip+4Yct3VkXUo1WJuhxQNfL9Hc9XqhFNFuDoNb3BgAwP5rHydOnOUtxC9lSDHr2gYdk15FBcA35lCZovgs6To8WBaq7s1fKL1gTjLplttWQ7lNMl5HsNRDA567T+BZFYCK1NzK3cSaa7l0yDaWfpFx09XwwZ6D/l4hwDkQN7poMWvrNMq97UkeoLK1+XXiLCwu+9/whXsaLGFccT6nsRpC4Zrrl6WbDWcKlebtFbwD5eKq3aSy0L4h4wBudTBUM5vFu5MP8DNMGeJ/9FD7dZd+QP4rpAVA78UWek7j7B58NOmCBH6PHipToXf7hitIDLd2Yq5+6ngsjPICK+ccwKEFM/aIEk/g490YZIvzY7rGLJi22yfPiBoSuPtzgSayUwKhslyB3OaLpVF8rk0txXQ2ZqwRYLFRmaw=",
+#     "timestamp": 1735981778411
+# }
 
 # 刷新token
-def refreshToken():
+def refreshToken(post_data):
     global headers
     url = "https://proservice.powerlong.com/member/refresh/token"
     res = requests.post(url, headers=headers, json=post_data,verify=False)
@@ -38,20 +45,63 @@ def refreshToken():
     return token
 
 
-def sign():
+def sign(uid):
     params = (
         ('miniAppKey', 'MAIN_MINIAPP'),
         ('projectId', 'WLKJ7E1C7AFAFB43E986670A81CF4258'),
-        ('uid', '7d63c6f83d9543e3b80b389bfc42c841'),
+        ('uid', uid),
     )
 
     response = requests.get('https://proservice.powerlong.com/signinApply/doWiexinSignin', headers=headers, params=params,verify=False)
     print(response.text)
 
 
+def batchSign():
+    global headers
+    # 大号
+    post_data1={
+        "miniAppKey": "MAIN_MINIAPP",
+        "projectId": "WLKJ7E1C7AFAFB43E986670A81CF4258",
+        "uid": "7d63c6f83d9543e3b80b389bfc42c841",
+        "openId": "oWIV75WK0axPVPfsSE7z5wU6vNaA",
+        "parkOrderNum": "190119663E7oGD1XxJ3oS2ylnL4V0D",
+        "sign": "9cc88f7baefec382f90174aa92c7a592e58c6e8e",
+        "encryptedData": "TWY/+Y2hgY5jcvMLAjEk5wQRSA24Isw0p7KX+LzL5teci6XpBCwWV22mWcgUtxS9nb07qBxkBU5PYqu6Kv1ZHN00mjDIb6BnFoncJFHSavVNsHtcjzNJhAfc7JEwrvOqxq68WLGhdduMbSKLMx8A1fQ9bTnhNMw5A0fFiae6WPuELgfO4xr6L4PsAvbA+WuYaLXN9VBBdNAcCsfMJOP+j+ChAGedbBs6N7gqfbcNRje287786n8R5IHML7So4oiRvSqw5ZbKU+Ip+4Yct3VkXUo1WJuhxQNfL9Hc9XqhFNFuDoNb3BgAwP5rHydOnOUtxC9lSDHr2gYdk15FBcA35lCZovgs6To8WBaq7s1fKL1gTjLplttWQ7lNMl5HsNRDA567T+BZFYCK1NzK3cSaa7l0yDaWfpFx09XwwZ6D/l4hwDkQN7poMWvrNMq97UkeoLK1+XXiLCwu+9/whXsaLGFccT6nsRpC4Zrrl6WbDWcKlebtFbwD5eKq3aSy0L4h4wBudTBUM5vFu5MP8DNMGeJ/9FD7dZd+QP4rpAVA78UWek7j7B58NOmCBH6PHipToXf7hitIDLd2Yq5+6ngsjPICK+ccwKEFM/aIEk/g490YZIvzY7rGLJi22yfPiBoSuPtzgSayUwKhslyB3OaLpVF8rk0txXQ2ZqwRYLFRmaw=",
+        "timestamp": 1735981778411
+    }
+    # 小号
+    post_data2={
+        "miniAppKey":"MAIN_MINIAPP",
+        "projectId":"WLKJ7E1C7AFAFB43E986670A81CF4258",
+        "uid":"c34864a3ddd14864a51ed30c6a13191a",
+        "openId":"oWIV75VCCgcYITvEeOxIakkbH4jM",
+        "sign":"cbe8b5fb4da0ed1526f0389e4293e3014a0e384a",
+        "encryptedData":"TWY/+Y2hgY5jcvMLAjEk5wQRSA24Isw0p7KX+LzL5teci6XpBCwWV22mWcgUtxS9nb07qBxkBU5PYqu6Kv1ZHN00mjDIb6BnFoncJFHSavUKSL4Oe206DQZm7ke+jLDoKqknAhwIt2duG/bsNyDkKmfEBGqujfBT56lh0o+05MfXUbfcX5YseZtjcQkTinYLqLGePUCCJFRhm2Mo93aP0Q==",
+        "timestamp":1763041025092
+    }
+    
+    # xueixuei
+    post_data3={
+        "miniAppKey":"MAIN_MINIAPP",
+        "projectId":"WLKJ7E1C7AFAFB43E986670A81CF4258",
+        "uid":"9b8df6e48641432da3fdf5da7c9f053d",
+        "openId":"oWIV75U80puZRbtd1m-m-AI0UD_g",
+        "sign":"7ede3fea14648e77187fbf8c25b572b7e9f56be4",
+        "encryptedData":"TWY/+Y2hgY5jcvMLAjEk5wQRSA24Isw0p7KX+LzL5teci6XpBCwWV22mWcgUtxS9nb07qBxkBU5PYqu6Kv1ZHN00mjDIb6BnFoncJFHSavUhFu2/RTnXZx4i2kVb81Pu8a72+Pp4Fq6PaVn4DDljCvSa5p1SdZkEFwgwnGVFDjQ2kbVA7ckuedXlIxrcqEqQY6MIvn5J8n1kS3cikgGQ3g==",
+        "timestamp":1763042144833
+    }
+    
+    postDataList=[post_data1,post_data2,post_data3]
+    for post_data in postDataList:
+        uid = post_data["uid"]
+        headers["uid"] = uid
+        refreshToken(post_data)
+        delay()
+        sign(uid)
+
 def main():
     refreshToken()
     sign()
-    # 测试
         
-main()
+if __name__ == '__main__':
+    batchSign()
