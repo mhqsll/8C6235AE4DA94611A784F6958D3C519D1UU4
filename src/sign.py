@@ -45,14 +45,19 @@ def refreshToken(post_data):
     return token
 
 
-def sign(uid):
+def sign(uid, project_id):
     params = (
         ('miniAppKey', 'MAIN_MINIAPP'),
-        ('projectId', 'WLKJ7E1C7AFAFB43E986670A81CF4258'),
+        ('projectId', project_id),
         ('uid', uid),
     )
 
-    response = requests.get('https://proservice.powerlong.com/signinApply/doWiexinSignin', headers=headers, params=params,verify=False)
+    response = requests.get(
+        'https://proservice.powerlong.com/signinApply/doWiexinSignin',
+        headers=headers,
+        params=params,
+        verify=False,
+    )
     print(response.text)
 
 
@@ -91,13 +96,25 @@ def batchSign():
         "timestamp":1763042144833
     }
     
-    postDataList=[post_data1,post_data2,post_data3]
+    # 该用户使用不同的 projectId；签到请求会从每个用户的 post_data 读取项目。
+    post_data4 = {
+        "miniAppKey": "MAIN_MINIAPP",
+        "projectId": "4028347027a51b8f0127b336b2a30009",
+        "uid": "cd490644d4354f718d12c4b3ee03921d",
+        "openId": "oWIV75TZCuR_VjyE_DNiI9cx5InU",
+        "sign": "c2d63f20065389e4b0294e50076edc5616b8618f",
+        "encryptedData": "TWY/+Y2hgY5jcvMLAjEk5wQRSA24Isw0p7KX+LzL5tdrGXXyKrunUSDPq7NGxjUA5dHANPmgpfeczsAUxVgwi45vEWERemLiK554AHT56olUJDwYTLXxQ+4JEAD5iunWGSdBxcfDsPytVChpyffIL6qjjAxC4VAKYTh2wTxwxBBBBjkf7Zufg0aJJTV8BT6m+wqV6QBKr8RJMd3wdWVfsw==",
+        "timestamp": 1792983236809,
+    }
+
+    postDataList = [post_data1, post_data2, post_data3, post_data4]
     for post_data in postDataList:
         uid = post_data["uid"]
+        project_id = post_data["projectId"]
         headers["uid"] = uid
         refreshToken(post_data)
         delay()
-        sign(uid)
+        sign(uid, project_id)
 
 def main():
     refreshToken()
