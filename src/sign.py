@@ -122,5 +122,4 @@ def main():
         
 if __name__ == '__main__':
     # ssss111
-    delay(30,60)
     batchSign()
