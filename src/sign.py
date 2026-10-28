@@ -111,6 +111,7 @@ def batchSign():
     for post_data in postDataList:
         uid = post_data["uid"]
         project_id = post_data["projectId"]
+        post_data["timestamp"] = int(time.time() * 1000)
         headers["uid"] = uid
         refreshToken(post_data)
         delay()
@@ -122,4 +123,5 @@ def main():
         
 if __name__ == '__main__':
     # ssss111
+    delay(30,60)
     batchSign()
